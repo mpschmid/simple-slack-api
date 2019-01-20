@@ -23,8 +23,8 @@ abstract class AbstractSlackSessionImpl implements SlackSession
     protected List<SlackChannelRenamedListener>          channelRenamedListener         = new CopyOnWriteArrayList<>();
     protected List<SlackChannelUnarchivedListener>       channelUnarchiveListener       = new CopyOnWriteArrayList<>();
     protected List<SlackChannelJoinedListener>           channelJoinedListener          = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelLeftListener>             channelLeftListener            = new CopyOnWriteArrayList<>();
     protected List<SlackMemberJoinedChannelListener>     memberJoinedChannelListener    = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelLeftListener>             channelLeftListener            = new CopyOnWriteArrayList<>();
     protected List<SlackGroupJoinedListener>             groupJoinedListener            = new CopyOnWriteArrayList<>();
     protected List<SlackMessageDeletedListener>          messageDeletedListener         = new CopyOnWriteArrayList<>();
     protected List<SlackMessagePostedListener>           messagePostedListener          = new CopyOnWriteArrayList<>();
