@@ -11,147 +11,152 @@ buildscript {
     }
 }
 
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'eclipse'
-apply plugin: 'signing'
-apply plugin: 'maven-publish'
+//apply plugin: 'eclipse'
+//apply plugin: 'signing'
+//apply plugin: 'maven-publish'
 apply plugin: 'nebula.optional-base'
 apply plugin: 'com.github.ben-manes.versions'
-apply from: project.rootProject.file("gradle/scripts/coverage.gradle")
+//apply from: project.rootProject.file("gradle/scripts/coverage.gradle")
 
 group = 'com.ullink.slack'
 archivesBaseName = 'simpleslackapi'
 version = '1.2.0'
 
 
-def pomConfig = {
-    name 'Simple Slack API'
-    url 'https://github.com/Ullink/simple-slack-api'
-    licenses {
-        license {
-            name 'CC0 1.0 Universal (CC0 1.0)'
-            url 'http://creativecommons.org/publicdomain/zero/1.0/'
-        }
-    }
-    developers {
-        developer {
-            id 'bcorne'
-            name 'Benoit Corne'
-            email 'benoit.corne@gmail.com'
-        }
-    }
-    contributors {
-        contributor {
-            name 'Christian Sprecher'
-            email 'kindofwhat@gmail.com'
-            url 'https://github.com/kindofwhat'
-        }
-        contributor {
-            name 'Jan Vidar Krey'
-            email 'janvidar@extatic.org'
-        }
-        contributor {
-            name 'David Seebacher'
-            email 'dseebacher@gmail.com'
-            url 'https://github.com/dseebacher'
-        }
-        contributor {
-            name 'Wouter Vernaillen'
-            url 'http://www.vernaillen.com'
-        }
-        contributor {
-            name 'Claudio Comandini'
-            email 'c.comandini@gmail.com'
-            url 'https://twitter.com/c_comandini'
-        }
-        contributor {
-            name 'Maxim Gurkin'
-            email 'redmax3d@gmail.com'
-            url 'http://redcraft.net'
-        }
-        contributor {
-            name 'Ole Kozaczenko'
-            email 'olkozacz@gmail.com'
-        }
-        contributor {
-            name 'Georges Gomes'
-        }
-        contributor {
-            name 'François Valdy'
-        }
-        contributor {
-            name 'Harry Fox'
-            email 'harry.fox.ic@icloud.com'
-            url 'https://github.com/ParaPenguin'
-        }
-        contributor {
-            name 'Logan Clément'
-            email 'logs.be@gmail.com'
-        }
-        contributor {
-            name 'Rhys Kenwell'
-            email 'purbleguy@gmail.com'
-            url 'http://redrield.github.io/'
-        }
-        contributor {
-            name 'Dmitry Che'
-            email 'morfeusys@gmail.com'
-            url 'https://github.com/Morfeusys'
-        }
-        contributor {
-            name 'Bahadir Akin'
-            email 'bhdrkn@gmail.com'
-            url 'https://github.com/bhdrkn'
-        }
-    }
-    scm {
-        connection 'scm:git:git@github.com:Ullink/simple-slack-api.git'
-        developerConnection 'scm:git:git@github.com:Ullink/simple-slack-api.git'
-        url 'git@github.com/Ullink/simple-slack-api'
-    }
-}
+//def pomConfig = {
+//    name 'Simple Slack API'
+//    url 'https://github.com/Ullink/simple-slack-api'
+//    licenses {
+//        license {
+//            name 'CC0 1.0 Universal (CC0 1.0)'
+//            url 'http://creativecommons.org/publicdomain/zero/1.0/'
+//        }
+//    }
+//    developers {
+//        developer {
+//            id 'bcorne'
+//            name 'Benoit Corne'
+//            email 'benoit.corne@gmail.com'
+//        }
+//    }
+//    contributors {
+//        contributor {
+//            name 'Christian Sprecher'
+//            email 'kindofwhat@gmail.com'
+//            url 'https://github.com/kindofwhat'
+//        }
+//        contributor {
+//            name 'Jan Vidar Krey'
+//            email 'janvidar@extatic.org'
+//        }
+//        contributor {
+//            name 'David Seebacher'
+//            email 'dseebacher@gmail.com'
+//            url 'https://github.com/dseebacher'
+//        }
+//        contributor {
+//            name 'Wouter Vernaillen'
+//            url 'http://www.vernaillen.com'
+//        }
+//        contributor {
+//            name 'Claudio Comandini'
+//            email 'c.comandini@gmail.com'
+//            url 'https://twitter.com/c_comandini'
+//        }
+//        contributor {
+//            name 'Maxim Gurkin'
+//            email 'redmax3d@gmail.com'
+//            url 'http://redcraft.net'
+//        }
+//        contributor {
+//            name 'Ole Kozaczenko'
+//            email 'olkozacz@gmail.com'
+//        }
+//        contributor {
+//            name 'Georges Gomes'
+//        }
+//        contributor {
+//            name 'François Valdy'
+//        }
+//        contributor {
+//            name 'Harry Fox'
+//            email 'harry.fox.ic@icloud.com'
+//            url 'https://github.com/ParaPenguin'
+//        }
+//        contributor {
+//            name 'Logan Clément'
+//            email 'logs.be@gmail.com'
+//        }
+//        contributor {
+//            name 'Rhys Kenwell'
+//            email 'purbleguy@gmail.com'
+//            url 'http://redrield.github.io/'
+//        }
+//        contributor {
+//            name 'Dmitry Che'
+//            email 'morfeusys@gmail.com'
+//            url 'https://github.com/Morfeusys'
+//        }
+//        contributor {
+//            name 'Bahadir Akin'
+//            email 'bhdrkn@gmail.com'
+//            url 'https://github.com/bhdrkn'
+//        }
+//    }
+//    scm {
+//        connection 'scm:git:git@github.com:Ullink/simple-slack-api.git'
+//        developerConnection 'scm:git:git@github.com:Ullink/simple-slack-api.git'
+//        url 'git@github.com/Ullink/simple-slack-api'
+//    }
+//}
 
 
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            artifactId = archivesBaseName
-            from components.java
-            artifact sourcesJar
-            artifact javadocJar
-            pom.withXml {
-                asNode().appendNode('description', 'A simple API to build bot running on Slack')
-                asNode().children().last() + pomConfig
-            }
-        }
-    }
-}
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifactId = archivesBaseName
+//            from components.java
+//            artifact sourcesJar
+//            artifact javadocJar
+//            pom.withXml {
+//                asNode().appendNode('description', 'A simple API to build bot running on Slack')
+//                asNode().children().last() + pomConfig
+//            }
+//        }
+//    }
+//}
 
 
-task copyRuntimeLibs(type: Copy) {
-    into "lib"
-    from configurations.runtime
-}
+//task copyRuntimeLibs(type: Copy) {
+//    into "lib"
+//    from configurations.runtime
+//}
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc
-}
+//task javadocJar(type: Jar) {
+//    classifier = 'javadoc'
+//    from javadoc
+//}
 
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
+//task sourcesJar(type: Jar) {
+//    classifier = 'sources'
+//    from sourceSets.main.allSource
+//}
 
-artifacts {
-    archives javadocJar, sourcesJar
-}
+//artifacts {
+    //archives javadocJar, sourcesJar
+//}
 
-signing {
-    required false
-    sign configurations.archives
-}
+//signing {
+//    required false
+//    sign configurations.archives
+//}
 
 test {
     testLogging {
@@ -176,4 +181,5 @@ dependencies {
     testCompile 'org.assertj:assertj-core:3.8.0'
     testCompile 'junit:junit:4.12'
     testCompile 'org.slf4j:slf4j-simple:1.7.7'
+
 }

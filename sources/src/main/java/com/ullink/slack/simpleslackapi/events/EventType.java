@@ -13,6 +13,7 @@ public enum EventType
     CHANNEL_UNARCHIVE("channel_unarchive"),
     CHANNEL_JOINED("channel_joined"),
     CHANNEL_LEFT("channel_left"),
+    MEMBER_JOINED_CHANNEL("member_joined_channel"),
     GROUP_JOINED("group_joined"),
     REACTION_ADDED("reaction_added"),
     REACTION_REMOVED("reaction_removed"),
