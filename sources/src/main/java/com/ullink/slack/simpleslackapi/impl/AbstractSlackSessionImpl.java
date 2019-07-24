@@ -17,27 +17,28 @@ abstract class AbstractSlackSessionImpl implements SlackSession
     protected SlackPersona                         sessionPersona;
     protected SlackTeam team;
 
-    protected List<SlackChannelArchivedListener>   channelArchiveListener   = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelCreatedListener>    channelCreateListener    = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelDeletedListener>    channelDeleteListener    = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelRenamedListener>    channelRenamedListener   = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelUnarchivedListener> channelUnarchiveListener = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelJoinedListener>     channelJoinedListener    = new CopyOnWriteArrayList<>();
-    protected List<SlackChannelLeftListener>       channelLeftListener      = new CopyOnWriteArrayList<>();
-    protected List<SlackGroupJoinedListener>       groupJoinedListener      = new CopyOnWriteArrayList<>();
-    protected List<SlackMessageDeletedListener>    messageDeletedListener   = new CopyOnWriteArrayList<>();
-    protected List<SlackMessagePostedListener>     messagePostedListener    = new CopyOnWriteArrayList<>();
-    protected List<SlackMessageUpdatedListener>    messageUpdatedListener   = new CopyOnWriteArrayList<>();
-    protected List<SlackConnectedListener>         slackConnectedListener   = new CopyOnWriteArrayList<>();
-    protected List<ReactionAddedListener>          reactionAddedListener    = new CopyOnWriteArrayList<>();
-    protected List<ReactionRemovedListener>        reactionRemovedListener  = new CopyOnWriteArrayList<>();
-    protected List<SlackUserChangeListener>        slackUserChangeListener  = new CopyOnWriteArrayList<>();
-    protected List<SlackTeamJoinListener>          slackTeamJoinListener    = new CopyOnWriteArrayList<>();
-    protected List<PinAddedListener>               pinAddedListener         = new CopyOnWriteArrayList<>();
-    protected List<PinRemovedListener>             pinRemovedListener       = new CopyOnWriteArrayList<>();
-    protected List<PresenceChangeListener>         presenceChangeListener   = new CopyOnWriteArrayList<>();
-    protected List<SlackDisconnectedListener>     slackDisconnectedListener = new CopyOnWriteArrayList<>();
-    protected List<UserTypingListener>             userTypingListener       = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelArchivedListener>         channelArchiveListener         = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelCreatedListener>          channelCreateListener          = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelDeletedListener>          channelDeleteListener          = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelRenamedListener>          channelRenamedListener         = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelUnarchivedListener>       channelUnarchiveListener       = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelJoinedListener>           channelJoinedListener          = new CopyOnWriteArrayList<>();
+    protected List<SlackMemberJoinedChannelListener>     memberJoinedChannelListener    = new CopyOnWriteArrayList<>();
+    protected List<SlackChannelLeftListener>             channelLeftListener            = new CopyOnWriteArrayList<>();
+    protected List<SlackGroupJoinedListener>             groupJoinedListener            = new CopyOnWriteArrayList<>();
+    protected List<SlackMessageDeletedListener>          messageDeletedListener         = new CopyOnWriteArrayList<>();
+    protected List<SlackMessagePostedListener>           messagePostedListener          = new CopyOnWriteArrayList<>();
+    protected List<SlackMessageUpdatedListener>          messageUpdatedListener         = new CopyOnWriteArrayList<>();
+    protected List<SlackConnectedListener>               slackConnectedListener         = new CopyOnWriteArrayList<>();
+    protected List<ReactionAddedListener>                reactionAddedListener          = new CopyOnWriteArrayList<>();
+    protected List<ReactionRemovedListener>              reactionRemovedListener        = new CopyOnWriteArrayList<>();
+    protected List<SlackUserChangeListener>              slackUserChangeListener        = new CopyOnWriteArrayList<>();
+    protected List<SlackTeamJoinListener>                slackTeamJoinListener          = new CopyOnWriteArrayList<>();
+    protected List<PinAddedListener>                     pinAddedListener               = new CopyOnWriteArrayList<>();
+    protected List<PinRemovedListener>                   pinRemovedListener             = new CopyOnWriteArrayList<>();
+    protected List<PresenceChangeListener>               presenceChangeListener         = new CopyOnWriteArrayList<>();
+    protected List<SlackDisconnectedListener>            slackDisconnectedListener      = new CopyOnWriteArrayList<>();
+    protected List<UserTypingListener>                   userTypingListener             = new CopyOnWriteArrayList<>();
 
     static final SlackChatConfiguration            DEFAULT_CONFIGURATION    = SlackChatConfiguration.getConfiguration().asUser();
     static final boolean                           DEFAULT_UNFURL           = true;
@@ -368,6 +369,18 @@ abstract class AbstractSlackSessionImpl implements SlackSession
     public void removeChannelJoinedListener(SlackChannelJoinedListener listener)
     {
         channelJoinedListener.remove(listener);
+    }
+
+    @Override
+    public void addMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener)
+    {
+        memberJoinedChannelListener.add(listener);
+    }
+
+    @Override
+    public void removeMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener)
+    {
+        memberJoinedChannelListener.remove(listener);
     }
 
     @Override

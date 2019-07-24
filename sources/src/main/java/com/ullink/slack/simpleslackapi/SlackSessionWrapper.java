@@ -4,27 +4,7 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
 
-import com.ullink.slack.simpleslackapi.listeners.PinAddedListener;
-import com.ullink.slack.simpleslackapi.listeners.PinRemovedListener;
-import com.ullink.slack.simpleslackapi.listeners.PresenceChangeListener;
-import com.ullink.slack.simpleslackapi.listeners.ReactionAddedListener;
-import com.ullink.slack.simpleslackapi.listeners.ReactionRemovedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelArchivedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelCreatedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelDeletedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelJoinedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelLeftListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelRenamedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackChannelUnarchivedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackConnectedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackDisconnectedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackGroupJoinedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackMessageDeletedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackMessagePostedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackMessageUpdatedListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackTeamJoinListener;
-import com.ullink.slack.simpleslackapi.listeners.SlackUserChangeListener;
-import com.ullink.slack.simpleslackapi.listeners.UserTypingListener;
+import com.ullink.slack.simpleslackapi.listeners.*;
 import com.ullink.slack.simpleslackapi.replies.*;
 
 public class SlackSessionWrapper implements SlackSession
@@ -421,6 +401,16 @@ public class SlackSessionWrapper implements SlackSession
     @Override public void removeChannelJoinedListener(SlackChannelJoinedListener listener)
     {
         delegate.removeChannelJoinedListener(listener);
+    }
+
+    @Override
+    public void addMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener) {
+        delegate.addMemberJoinedChannelListener(listener);
+    }
+
+    @Override
+    public void removeMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener) {
+        delegate.removeMemberJoinedChannelListener(listener);
     }
 
     @Override public void addChannelLeftListener(SlackChannelLeftListener listener)

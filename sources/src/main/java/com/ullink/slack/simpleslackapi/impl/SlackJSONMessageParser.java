@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ullink.slack.simpleslackapi.listeners.SlackMemberJoinedChannelListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,6 +77,8 @@ class SlackJSONMessageParser {
                 return extractChannelUnarchiveEvent(slackSession, obj);
             case CHANNEL_JOINED:
                 return extractChannelJoinedEvent(slackSession, obj);
+            case MEMBER_JOINED_CHANNEL:
+                return extractMemberJoinedChannelEvent(slackSession, obj);
             case CHANNEL_LEFT:
                 return extractChannelLeftEvent(slackSession, obj);
             case GROUP_JOINED:
@@ -99,6 +102,20 @@ class SlackJSONMessageParser {
             default:
                 return new UnknownEvent(obj.toString());
         }
+    }
+
+    private static SlackMemberJoinedChannel extractMemberJoinedChannelEvent(SlackSession slackSession, JsonObject obj)
+    {
+        String channelId = GsonHelper.getStringOrNull(obj.get("channel"));
+        SlackChannel slackChannel = slackSession.findChannelById(channelId);
+
+        String userJoiningId = GsonHelper.getStringOrNull(obj.get("user"));
+        SlackUser userJoining = slackSession.findUserById(userJoiningId);
+
+        String userInviterId = GsonHelper.getStringOrNull(obj.get("inviter"));
+        SlackUser userInviter = slackSession.findUserById(userInviterId);
+
+        return new SlackMemberJoinedChannel(slackChannel, userJoining, userInviter);
     }
 
     private static SlackChannelJoined extractChannelJoinedEvent(SlackSession slackSession, JsonObject obj)

@@ -2,6 +2,7 @@ package com.ullink.slack.simpleslackapi;
 
 import com.ullink.slack.simpleslackapi.listeners.*;
 import com.ullink.slack.simpleslackapi.replies.*;
+import org.apache.http.cookie.SM;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -164,6 +165,10 @@ public interface SlackSession {
     void addChannelJoinedListener(SlackChannelJoinedListener listener);
 
     void removeChannelJoinedListener(SlackChannelJoinedListener listener);
+
+    void addMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener);
+
+    void removeMemberJoinedChannelListener(SlackMemberJoinedChannelListener listener);
 
     void addChannelLeftListener(SlackChannelLeftListener listener);
 
